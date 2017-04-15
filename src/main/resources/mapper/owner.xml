@@ -10,14 +10,23 @@
         <result column="balance" property="balance"/>
         <result column="password" property="password"/>
     </resultMap>
+    <insert id="insertOwner">
+        INSERT INTO owner VALUES (#{id},#{name},#{email},#{password},#{balance});
+    </insert>
+    <insert id="additionalInfo">
+        INSERT INTO owner VALUES (#{owner_id},#{gender},#{age},#{bio});
+    </insert>
     <select id="selectInfo" resultMap="ownerMap">
         SELECT id,name,email,password,balance,gender,age,bio
-          FROM owner JOIN owner_info HAVING name=#{name};
+          FROM owner JOIN owner_info HAVING id=#{id};
     </select>
     <select id="selectBalance" resultMap="ownerMap">
-        SELECT (balance) FROM owner HAVING name=#{name};
+        SELECT (balance) FROM owner HAVING id=#{id};
     </select>
     <update id="updateBalance">
-        UPDATE owner set balance=#{change} HAVING name=#{name};
+        UPDATE owner set balance=#{change} HAVING id=#{id};
+    </update>
+    <update id="updateInfo">
+        UPDATE owner_info SET gender=#{gender},age=#{age},bio=#{bio} WHERE owner_id=#{id};
     </update>
 </mapper>

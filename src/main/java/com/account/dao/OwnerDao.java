@@ -1,11 +1,15 @@
 package com.account.dao;
 
 import com.account.entity.Owner;
+import com.account.entity.OwnerInfo;
 
 import java.util.Map;
 
 interface OwnerDao {
-    Map<Integer,Owner> selectInfo(String owner);
-    Integer selectBalance(String owner);
-    Boolean updateBalance(String owner,Integer change);
+    Boolean insertOwner(Owner owner);
+    Boolean additionalInfo(OwnerInfo ownerInfo);
+    Map<Integer,Owner> selectInfo(Integer id);
+    Integer selectBalance(Integer id);
+    Boolean updateBalance(Integer id,Integer change);
+    Boolean updateInfo(OwnerInfo ownerInfo,Integer id);
 }
