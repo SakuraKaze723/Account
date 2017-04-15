@@ -3,5 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.account.dao.OwnerDao">
-
+    <resultMap id="ownerMap" type="com.account.entity.Owner">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="email" property="email"/>
+        <result column="balance" property="balance"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="selectInfo" resultMap="ownerMap">
+        SELECT * FROM owner HAVING owner=#{owner};
+    </select>
+    <select id="selectBalance" resultMap="ownerMap">
+        SELECT (balance) FROM owner HAVING owner=#{owner};
+    </select>
+    <update id="updateBalance">
+        UPDATE owner set balance=#{change} HAVING owner=#{owner};
+    </update>
 </mapper>

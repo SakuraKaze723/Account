@@ -4,6 +4,7 @@ public class Owner {
     private int id;
     private String name;
     private String email;
+    private Double balance;
     private String password;
 
     public int getId() {
@@ -28,6 +29,14 @@ public class Owner {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 
     public String getPassword() {
