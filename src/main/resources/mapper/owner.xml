@@ -11,12 +11,13 @@
         <result column="password" property="password"/>
     </resultMap>
     <select id="selectInfo" resultMap="ownerMap">
-        SELECT * FROM owner HAVING owner=#{owner};
+        SELECT id,name,email,password,balance,gender,age,bio
+          FROM owner JOIN owner_info HAVING name=#{name};
     </select>
     <select id="selectBalance" resultMap="ownerMap">
-        SELECT (balance) FROM owner HAVING owner=#{owner};
+        SELECT (balance) FROM owner HAVING name=#{name};
     </select>
     <update id="updateBalance">
-        UPDATE owner set balance=#{change} HAVING owner=#{owner};
+        UPDATE owner set balance=#{change} HAVING name=#{name};
     </update>
 </mapper>
