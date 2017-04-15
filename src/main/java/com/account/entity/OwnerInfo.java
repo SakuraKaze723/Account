@@ -5,7 +5,7 @@ public class OwnerInfo {
     private Boolean gender;
     private Integer age;
     private String bio;
-    private Integer money;
+    private Double money;
 
     public int getOwnerId() {
         return ownerId;
@@ -39,11 +39,11 @@ public class OwnerInfo {
         this.bio = bio;
     }
 
-    public Integer getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Integer money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 }
